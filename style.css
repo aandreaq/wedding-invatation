@@ -1,0 +1,1723 @@
+@import url('https://fonts.googleapis.com/css2?family=Ballet&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+
+  background:
+        radial-gradient(
+            circle at center,
+            #eadbc5 0%,
+            #d8c3a5 55%,
+            #bda27d 100%
+        );
+
+
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =========================
+   GLAVNA STRANICA
+========================= */
+
+
+
+.cover {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+
+/* =========================
+   SLIKA SA GOLUBOVIMA
+========================= */
+
+.invitation-image {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 5;
+
+    animation: floating 4s ease-in-out infinite;
+}
+
+
+.invitation-image img {
+    display: block;
+
+    width: min(700px, 85vw);
+    max-height: 82vh;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 18px 30px rgba(100, 75, 45, 0.16)
+        );
+}
+
+
+/* =========================
+   POMERANJE SLIKE GORE-DOLE
+========================= */
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+/* =========================
+   DUGME OTVORITE
+========================= */
+
+#openInvitation {
+    position: absolute;
+
+    left: 50%;
+    bottom: 33%;
+
+    transform: translateX(-50%) rotate(8deg);
+
+    padding: 13px 36px;
+
+    background: transparent;
+
+    border: 1px solid #b99d7d;
+
+    color: #765f49;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#openInvitation:hover {
+    background: #b99d7d;
+
+    color: #fff;
+
+    transform:
+        translateX(-50%)
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(100, 75, 45, 0.2);
+}
+
+
+/* =========================
+   LATICE
+========================= */
+
+.petals {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 20;
+}
+
+
+.petal {
+    position: absolute;
+
+    top: -30px;
+
+    width: 13px;
+    height: 8px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border-radius: 100% 0 100% 0;
+
+    filter:
+        drop-shadow(
+            0 2px 3px rgba(120, 90, 60, 0.12)
+        );
+
+    animation: falling linear infinite;
+}
+
+
+@keyframes falling {
+
+    0% {
+        transform:
+            translateY(-30px)
+            translateX(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform:
+            translateY(50vh)
+            translateX(var(--sway))
+            rotate(180deg);
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(calc(var(--sway) * -1))
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .invitation-image img {
+        width: 94vw;
+        max-height: 75vh;
+    }
+
+    #openInvitation {
+        bottom: 33%;
+
+        padding: 8px 20px;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+
+        transform: translateX(-50%) rotate(8deg);
+    }
+
+    #openInvitation:hover {
+        transform: translateX(-50%) rotate(8deg);
+    }
+}
+
+/* =========================
+   ALEKSANDRA & MARKO
+========================= */
+
+.couple-hero {
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background-image: url("img/anaimarko.jpg");
+    background-size: cover;
+    background-position: center center;
+
+    overflow: hidden;
+}
+
+
+.couple-names {
+    position: absolute;
+
+    top: 6%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    z-index: 2;
+}
+
+
+.couple-names .name {
+    font-family: "Ballet", "Allura", "Snell Roundhand",
+        "Segoe Script", cursive;
+
+    font-size: clamp(70px, 9vw, 125px);
+
+    font-weight: 400;
+
+    line-height: 0.75;
+
+    color: #9a7435;
+
+    text-shadow:
+        0 1px 1px rgba(255, 255, 255, 0.6),
+        0 3px 10px rgba(70, 45, 15, 0.25);
+}
+
+
+.couple-names .and {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(20px, 2.5vw, 32px);
+
+    font-style: italic;
+
+    color: #9a7435;
+
+    margin: 18px 0;
+
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+
+    .couple-hero {
+        width: 100%;
+        height: 0;
+        min-height: 0;
+
+        /* visina fotografije */
+        padding-bottom: 135%;
+
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-color: #f3ebdd;
+
+        overflow: hidden;
+    }
+
+    .couple-names {
+        top: 3%;
+    }
+
+    .couple-names .name {
+        font-size: 40px;
+    }
+
+    .couple-names .and {
+        font-size: 25px;
+        margin: 12px 0;
+    }
+
+    .love-story {
+        min-height: auto;
+        padding: 0 20px 60px;
+    }
+
+    .love-story::before {
+        inset: 12px;
+    }
+
+    .story-content {
+        width: 100%;
+        padding: 40px 24px;
+    }
+
+    .story-content h2 {
+        font-size: 34px;
+        margin-bottom: 28px;
+    }
+
+    .story-content h2 span {
+        font-size: 26px;
+    }
+
+    .story-content p {
+        font-size: 18px;
+        line-height: 1.65;
+    }
+
+    .gold-ornament {
+        width: 220px;
+    }
+
+    .top-ornament {
+        margin: 0;
+    }
+
+    .bottom-ornament {
+        margin-top: 0;
+    }
+}
+.love-story {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    padding: 110px 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #fffdf8 0%,
+            #f6eee1 45%,
+            #e4d3b8 100%
+        );
+
+    overflow: hidden;
+}
+
+/* Suptilni zlatni sjaj u pozadini */
+.love-story::after {
+    content: "";
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(190, 150, 70, 0.13),
+        rgba(190, 150, 70, 0) 70%
+    );
+
+    top: -300px;
+    right: -250px;
+
+    pointer-events: none;
+}
+
+/* Elegantni okvir oko cele sekcije */
+.love-story::before {
+    content: "";
+
+    position: absolute;
+    inset: 22px;
+
+    border: 1px solid rgba(166, 126, 47, 0.45);
+
+    pointer-events: none;
+}
+
+
+/* GLAVNI BLOK SA TEKSTOM */
+
+.story-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(720px, 100%);
+    box-sizing: border-box;
+
+    padding: 65px 55px;
+
+    text-align: center;
+
+    background: rgba(255, 253, 248, 0.55);
+
+    border-top: 1px solid #b18a42;
+    border-bottom: 1px solid #b18a42;
+
+    box-shadow:
+        0 20px 60px rgba(80, 55, 20, 0.10),
+        inset 0 0 50px rgba(255, 255, 255, 0.45);
+}
+
+
+/* NASLOV */
+
+.story-content h2 {
+    margin: 0 0 38px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 44px;
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    color: #765521;
+}
+
+.story-content h2 span {
+    font-family: Georgia, serif;
+
+    font-size: 31px;
+
+    margin-left: 7px;
+
+    color: #a67c32;
+}
+
+
+/* TEKST */
+
+.story-content p {
+    margin: 0 auto 27px;
+
+    max-width: 620px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    font-size: 21px;
+    line-height: 1.75;
+
+    letter-spacing: 0.25px;
+
+    color: #45362b;
+}
+
+.story-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ZLATNE LINIJE I ORNAMENT */
+
+.gold-ornament {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    width: 300px;
+
+    color: #a67c32;
+}
+
+.gold-ornament span:first-child,
+.gold-ornament span:last-child {
+    height: 1px;
+    flex: 1;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        #b18a42,
+        transparent
+    );
+}
+
+.gold-ornament span:nth-child(2) {
+    font-size: 14px;
+    transform: rotate(45deg);
+}
+
+.top-ornament {
+    margin-bottom: -1px;
+}
+
+.bottom-ornament {
+    margin-top: -1px;
+}
+
+
+/* TELEFON */
+
+@media (max-width: 600px) {
+
+    .love-story {
+        min-height: auto;
+        padding: 25px 20px 60px;
+    }
+
+    .love-story::before {
+        inset: 12px;
+    }
+
+    .story-content {
+        width: 100%;
+        padding: 40px 24px;
+    }
+
+    .story-content h2 {
+        font-size: 34px;
+        margin-bottom: 28px;
+    }
+
+    .story-content h2 span {
+        font-size: 26px;
+    }
+
+    .story-content p {
+        font-size: 18px;
+        line-height: 1.65;
+    }
+
+    .gold-ornament {
+        width: 220px;
+    }
+
+    .top-ornament {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .bottom-ornament {
+        margin-top: 0;
+    }
+}
+
+/* =========================
+   SAČUVAJ DATUM
+========================= */
+
+.save-date {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #fffdf9 0%,
+            #f5ecdf 48%,
+            #dfc9a8 100%
+        );
+
+    overflow: hidden;
+}
+
+/* suptilni zlatni sjaj */
+
+.save-date::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(185, 145, 65, 0.14),
+            rgba(185, 145, 65, 0) 70%
+        );
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+}
+
+/* elegantan okvir */
+
+.save-date::after {
+    content: "";
+    position: absolute;
+    inset: 22px;
+
+    border: 1px solid rgba(166, 126, 47, 0.45);
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   ORNAMENT
+========================= */
+
+.save-date-ornament {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 300px;
+    gap: 14px;
+
+    color: #a67c32;
+}
+
+.save-date-ornament span:first-child,
+.save-date-ornament span:last-child {
+    height: 1px;
+    flex: 1;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #b18a42,
+            transparent
+        );
+}
+
+.save-date-ornament span:nth-child(2) {
+    font-size: 14px;
+    transform: rotate(45deg);
+}
+
+.bottom-save {
+    margin-top: 35px;
+}
+
+
+/* =========================
+   SADRŽAJ
+========================= */
+
+.save-date-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(600px, 100%);
+    padding: 45px 50px;
+
+    text-align: center;
+
+    background: rgba(255, 253, 248, 0.48);
+
+    border-top: 1px solid #b18a42;
+    border-bottom: 1px solid #b18a42;
+
+    box-shadow:
+        0 20px 60px rgba(80, 55, 20, 0.10),
+        inset 0 0 50px rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================
+   NASLOV
+========================= */
+
+.save-date-small {
+    margin: 0 0 8px;
+
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+
+    color: #9a7435;
+}
+
+.save-date-content h2 {
+    margin: 0 0 35px;
+
+    font-family: "Great Vibes", cursive;
+    font-size: 58px;
+    font-weight: 400;
+
+    color: #8d682d;
+
+    text-shadow:
+        0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+
+/* =========================
+   KALENDAR
+========================= */
+
+.calendar {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+
+/* NOVEMBAR 2026 */
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    padding: 0 8px 18px;
+
+    border-bottom: 1px solid rgba(166, 126, 47, 0.35);
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+
+    color: #765521;
+}
+
+.calendar-header span:first-child {
+    font-size: 22px;
+    letter-spacing: 4px;
+}
+
+.calendar-header span:last-child {
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+
+/* DANI U NEDELJI */
+
+.weekdays,
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays {
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.weekdays span {
+    font-family: Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    color: #a17b3b;
+}
+
+
+/* DATUMI */
+
+.days span {
+    position: relative;
+
+    height: 43px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 18px;
+
+    color: #554337;
+}
+
+
+/* =========================
+   22. NOVEMBAR
+========================= */
+
+.special-day {
+    position: relative;
+
+    color: #8d682d !important;
+
+    font-weight: 600;
+}
+
+.special-day .heart {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Georgia, serif;
+    font-size: 48px;
+
+    color: #b18a42;
+
+    line-height: 1;
+
+    z-index: 0;
+}
+
+.special-day .date-number {
+    position: relative;
+    z-index: 2;
+
+    font-size: 18px;
+
+    color: #765521;
+}
+
+
+/* =========================
+   DONJI DATUM
+========================= */
+
+.save-date-bottom {
+    margin-top: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.save-date-bottom p {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 25px;
+    letter-spacing: 1px;
+
+    color: #765521;
+}
+
+.mini-line {
+    width: 45px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #b18a42
+        );
+}
+
+.mini-line:last-child {
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            #b18a42
+        );
+}
+
+
+/* =========================
+   TELEFON
+========================= */
+
+@media (max-width: 600px) {
+
+    .save-date {
+        min-height: auto;
+        padding: 70px 20px 60px;
+    }
+
+    .save-date::after {
+        inset: 12px;
+    }
+
+    .save-date-content {
+        width: 100%;
+        padding: 40px 20px;
+    }
+
+    .save-date-small {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .save-date-content h2 {
+        font-size: 46px;
+        margin-bottom: 30px;
+    }
+
+    .calendar {
+        max-width: 100%;
+    }
+
+    .calendar-header span:first-child {
+        font-size: 19px;
+    }
+
+    .calendar-header span:last-child {
+        font-size: 16px;
+    }
+
+    .days span {
+        height: 40px;
+        font-size: 17px;
+    }
+
+    .special-day .heart {
+        width: 44px;
+        height: 44px;
+        font-size: 44px;
+    }
+
+    .special-day .date-number {
+        font-size: 17px;
+    }
+
+    .save-date-bottom {
+        gap: 8px;
+    }
+
+    .save-date-bottom p {
+        font-size: 20px;
+        white-space: nowrap;
+    }
+
+    .mini-line {
+        width: 25px;
+    }
+
+    .save-date-ornament {
+        width: 220px;
+    }
+}
+/* =========================
+   LUKSUZNI ZLATNI VATROMET
+========================= */
+
+#fireworks {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 99999;
+    pointer-events: none;
+
+    display: none;
+    overflow: hidden;
+
+    background: rgba(30, 20, 10, 0.08);
+}
+
+
+/* =========================
+   CENTRALNI ZLATNI BLJESAK
+========================= */
+
+#fireworks::before {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 20px;
+    height: 20px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #fff8d6;
+
+    box-shadow:
+        0 0 20px #fff8d6,
+        0 0 50px #e8c66a,
+        0 0 100px #d4af37,
+        0 0 180px rgba(212, 175, 55, 0.8);
+
+    animation: central-explosion 1.8s ease-out forwards;
+}
+
+
+@keyframes central-explosion {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 0;
+    }
+
+    20% {
+        transform:
+            translate(-50%, -50%)
+            scale(3);
+
+        opacity: 1;
+    }
+
+    45% {
+        transform:
+            translate(-50%, -50%)
+            scale(10);
+
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(80);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   ZLATNI SVETLEĆI TRAGOVI
+========================= */
+
+.firework {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #fff4bd;
+
+    box-shadow:
+        0 0 5px #fff4bd,
+        0 0 12px #e8c66a,
+        0 0 25px #d4af37,
+        0 0 45px rgba(212, 175, 55, 0.8);
+
+    animation:
+        luxury-firework 2s
+        cubic-bezier(0.05, 0.7, 0.2, 1)
+        forwards;
+}
+
+
+@keyframes luxury-firework {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(0);
+
+        opacity: 0;
+    }
+
+    8% {
+        transform:
+            translate(0, 0)
+            scale(2);
+
+        opacity: 1;
+    }
+
+    55% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(var(--x), var(--y))
+            scale(0.1);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   ZLATNI PRSTENOVI
+========================= */
+
+.firework-ring {
+    position: absolute;
+
+    left: var(--ring-x);
+    top: var(--ring-y);
+
+    width: 20px;
+    height: 20px;
+
+    border: 2px solid rgba(232, 198, 106, 0.9);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    animation:
+        ring-explosion 1.5s
+        ease-out forwards;
+}
+
+
+@keyframes ring-explosion {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(18);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   CELO EKRAN - ZLATNI VELO
+========================= */
+
+#fireworks::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 242, 190, 0.65),
+            rgba(212, 175, 55, 0.25) 25%,
+            rgba(212, 175, 55, 0.08) 50%,
+            transparent 75%
+        );
+
+    animation:
+        golden-screen 1.9s
+        ease-out forwards;
+}
+
+
+@keyframes golden-screen {
+
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.2;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    65% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+```css
+/* =========================
+   PLAN VENČANJA
+========================= */
+
+.wedding-plan {
+    position: relative;
+
+    padding: 100px 25px 110px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(212, 175, 55, 0.08),
+            transparent 45%
+        ),
+        #f3ebdd;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   NASLOV
+========================= */
+
+.section-ornament {
+    font-size: 18px;
+
+    color: #c9a44c;
+
+    margin-bottom: 15px;
+
+    letter-spacing: 8px;
+}
+
+
+.wedding-plan h2 {
+    margin: 0;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 58px;
+
+    font-weight: 400;
+
+    color: #3a2a22;
+}
+
+
+.plan-intro {
+    max-width: 500px;
+
+    margin: 18px auto 65px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+    color: #6b594e;
+}
+
+
+/* =========================
+   STAVKE
+========================= */
+
+.plan-items {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 75px;
+}
+
+
+.plan-item {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 55px;
+
+    position: relative;
+}
+
+
+/* DRUGA STAVKA OBRNUTA */
+
+.plan-item:nth-child(2) {
+    direction: rtl;
+}
+
+.plan-item:nth-child(2) .plan-content {
+    direction: ltr;
+}
+
+
+/* =========================
+   OUTLINE SLIKA
+========================= */
+
+.location-image {
+    width: 250px;
+
+    height: 220px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+/* SPOLJNI KRUG */
+
+.location-image::before {
+    content: "";
+
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    border: 1px solid
+        rgba(201, 164, 76, 0.45);
+
+    border-radius: 50%;
+
+    transition: 0.5s ease;
+}
+
+
+/* UNUTRAŠNJI KRUG */
+
+.location-image::after {
+    content: "";
+
+    position: absolute;
+
+    width: 182px;
+    height: 182px;
+
+    border: 1px solid
+        rgba(201, 164, 76, 0.18);
+
+    border-radius: 50%;
+
+    transition: 0.5s ease;
+}
+
+
+/* SLIKA */
+
+.location-image img {
+    position: relative;
+
+    z-index: 2;
+
+    width: 175px;
+
+    height: 175px;
+
+    object-fit: contain;
+
+    opacity: 0.9;
+
+    filter:
+        sepia(20%)
+        saturate(0.7)
+        brightness(0.75);
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+
+/* =========================
+   HOVER NA SLIKU
+========================= */
+
+.plan-item:hover .location-image::before {
+    transform: scale(1.08);
+
+    border-color:
+        rgba(201, 164, 76, 0.8);
+}
+
+
+.plan-item:hover .location-image::after {
+    transform: scale(1.15);
+
+    border-color:
+        rgba(201, 164, 76, 0.35);
+}
+
+
+.plan-item:hover .location-image img {
+    transform: scale(1.06);
+
+    filter:
+        sepia(30%)
+        saturate(1)
+        brightness(0.65);
+}
+
+
+/* =========================
+   TEKST
+========================= */
+
+.plan-content {
+    text-align: left;
+}
+
+
+.plan-number {
+    display: block;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 4px;
+
+    color: #b9943d;
+
+    margin-bottom: 8px;
+}
+
+
+.plan-content h3 {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 24px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    color: #3a2a22;
+}
+
+
+.gold-line {
+    width: 55px;
+
+    height: 1px;
+
+    background: #c9a44c;
+
+    margin: 15px 0 17px;
+}
+
+
+.location-name {
+    margin: 0;
+
+    max-width: 330px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 20px;
+
+    line-height: 1.4;
+
+    color: #4d3b31;
+}
+
+
+.location-place {
+    margin: 8px 0 22px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 17px;
+
+    letter-spacing: 1px;
+
+    color: #806d60;
+}
+
+
+/* =========================
+   DUGME PUTANJA
+========================= */
+
+.route-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 19px;
+
+    border: 1px solid #b9943d;
+
+    color: #6f572b;
+
+    text-decoration: none;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.route-button .arrow {
+    font-size: 16px;
+
+    transition: transform 0.3s ease;
+}
+
+
+.route-button:hover {
+    background: #b9943d;
+
+    color: #fffaf0;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(91, 67, 25, 0.15);
+}
+
+
+.route-button:hover .arrow {
+    transform:
+        translate(3px, -3px);
+}
+
+
+/* =========================
+   MOBILNI
+========================= */
+
+@media (max-width: 700px) {
+
+    .wedding-plan {
+        padding:
+            75px 20px 85px;
+    }
+
+
+    .wedding-plan h2 {
+        font-size: 48px;
+    }
+
+
+    .plan-intro {
+        font-size: 18px;
+
+        margin-bottom: 50px;
+
+        max-width: 330px;
+    }
+
+
+    .plan-items {
+        gap: 65px;
+    }
+
+
+    .plan-item,
+    .plan-item:nth-child(2) {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+        direction: ltr;
+    }
+
+
+    .plan-item:nth-child(2) .plan-content {
+        direction: ltr;
+    }
+
+
+    /* KRUGOVI NA MOBILNOM */
+
+    .location-image {
+        width: 220px;
+
+        height: 200px;
+    }
+
+
+    .location-image::before {
+        width: 190px;
+
+        height: 190px;
+    }
+
+
+    .location-image::after {
+        width: 174px;
+
+        height: 174px;
+    }
+
+
+    /* VEĆA SLIKA */
+
+    .location-image img {
+        width: 165px;
+
+        height: 165px;
+    }
+
+
+    .plan-content {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .gold-line {
+        margin:
+            13px auto 16px;
+    }
+
+
+    .location-name {
+        max-width: 300px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        font-size: 19px;
+    }
+
+
+    .location-place {
+        font-size: 16px;
+    }
+
+}
