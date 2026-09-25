@@ -13,135 +13,367 @@ document.addEventListener("DOMContentLoaded", () => {
     const petalsContainer =
         document.getElementById("petals");
 
+    const goldGlitter =
+        document.getElementById("goldGlitter");
+
+    const weddingMusic =
+        document.getElementById("weddingMusic");
+
 
     /* =========================
-       OTVARANJE + LUKSUZNI VATROMET
+       ZLATNI GLITTER
+    ========================= */
+
+    if (goldGlitter) {
+
+        const glitterCount = 75;
+
+        for (let i = 0; i < glitterCount; i++) {
+
+            const glitter =
+                document.createElement("span");
+
+            glitter.classList.add("glitter");
+
+            /* POZICIJA */
+
+            glitter.style.left =
+                Math.random() * 100 + "%";
+
+            glitter.style.top =
+                Math.random() * 100 + "%";
+
+
+            /* VELIČINA */
+
+            const size =
+                Math.random() * 4 + 2;
+
+            glitter.style.width =
+                size + "px";
+
+            glitter.style.height =
+                size + "px";
+
+
+            /* TRAJANJE */
+
+            glitter.style.animationDuration =
+                (Math.random() * 2.5 + 2) + "s";
+
+
+            /* KAŠNJENJE */
+
+            glitter.style.animationDelay =
+                (Math.random() * 5) + "s";
+
+
+            goldGlitter.appendChild(
+                glitter
+            );
+        }
+
+
+        /* VEĆE ZVEZDICE */
+
+        const starCount = 22;
+
+        for (let i = 0; i < starCount; i++) {
+
+            const star =
+                document.createElement("span");
+
+            star.classList.add(
+                "glitter",
+                "star"
+            );
+
+            star.textContent = "✦";
+
+
+            star.style.left =
+                Math.random() * 100 + "%";
+
+            star.style.top =
+                Math.random() * 100 + "%";
+
+
+            star.style.fontSize =
+                (Math.random() * 10 + 9) + "px";
+
+
+            star.style.animationDuration =
+                (Math.random() * 3 + 2) + "s";
+
+
+            star.style.animationDelay =
+                (Math.random() * 5) + "s";
+
+
+            goldGlitter.appendChild(
+                star
+            );
+        }
+
+    }
+
+
+    /* =========================
+       OTVARANJE + MUZIKA + VATROMET
     ========================= */
 
     if (openInvitation && fireworks) {
 
-        openInvitation.addEventListener("click", () => {
+        openInvitation.addEventListener(
+            "click",
+            () => {
 
-            fireworks.style.display = "block";
+                /* =========================
+                   MUZIKA
+                   KREĆE OD 58. SEKUNDE
+                ========================= */
 
+                if (weddingMusic) {
 
-            /* CENTRALNA EKSPLOZIJA */
+                    weddingMusic.currentTime = 58;
 
-            createFirework(
-                window.innerWidth * 0.50,
-                window.innerHeight * 0.45,
-                180,
-                420
-            );
+                    weddingMusic.volume = 0.7;
 
+                    weddingMusic.play()
+                        .then(() => {
 
-            /* GORE LEVO */
+                            /*
+                             * Čim muzika krene,
+                             * čuvamo njenu trenutnu
+                             * poziciju.
+                             */
 
-            setTimeout(() => {
+                            const saveMusicPosition =
+                                () => {
 
-                createFirework(
-                    window.innerWidth * 0.18,
-                    window.innerHeight * 0.25,
-                    120,
-                    300
-                );
+                                    sessionStorage.setItem(
+                                        "weddingMusicTime",
+                                        weddingMusic.currentTime
+                                    );
 
-            }, 150);
+                                };
 
+                            weddingMusic.addEventListener(
+                                "timeupdate",
+                                saveMusicPosition
+                            );
 
-            /* GORE DESNO */
+                        })
+                        .catch(error => {
 
-            setTimeout(() => {
+                            console.log(
+                                "Muzika nije mogla da se pokrene:",
+                                error
+                            );
 
-                createFirework(
-                    window.innerWidth * 0.82,
-                    window.innerHeight * 0.25,
-                    120,
-                    300
-                );
+                        });
 
-            }, 280);
-
-
-            /* SREDINA LEVO */
-
-            setTimeout(() => {
-
-                createFirework(
-                    window.innerWidth * 0.08,
-                    window.innerHeight * 0.55,
-                    100,
-                    260
-                );
-
-            }, 400);
+                }
 
 
-            /* SREDINA DESNO */
+                /* =========================
+                   VATROMET
+                ========================= */
 
-            setTimeout(() => {
-
-                createFirework(
-                    window.innerWidth * 0.92,
-                    window.innerHeight * 0.55,
-                    100,
-                    260
-                );
-
-            }, 500);
+                fireworks.style.display =
+                    "block";
 
 
-            /* DONJI LEVO */
-
-            setTimeout(() => {
-
-                createFirework(
-                    window.innerWidth * 0.28,
-                    window.innerHeight * 0.75,
-                    110,
-                    280
-                );
-
-            }, 620);
-
-
-            /* DONJI DESNO */
-
-            setTimeout(() => {
-
-                createFirework(
-                    window.innerWidth * 0.72,
-                    window.innerHeight * 0.75,
-                    110,
-                    280
-                );
-
-            }, 720);
-
-
-            /* JOŠ JEDNA VELIKA CENTRALNA EKSPLOZIJA */
-
-            setTimeout(() => {
+                /* CENTRALNA EKSPLOZIJA */
 
                 createFirework(
                     window.innerWidth * 0.50,
-                    window.innerHeight * 0.38,
-                    150,
-                    380
+                    window.innerHeight * 0.45,
+                    180,
+                    420
                 );
 
-            }, 850);
+
+                /* GORE LEVO */
+
+                setTimeout(() => {
+
+                    createFirework(
+                        window.innerWidth * 0.18,
+                        window.innerHeight * 0.25,
+                        120,
+                        300
+                    );
+
+                }, 150);
 
 
-            /* PRELAZAK NA MAIN.HTML */
+                /* GORE DESNO */
 
-            setTimeout(() => {
+                setTimeout(() => {
 
-                window.location.href = "main.html";
+                    createFirework(
+                        window.innerWidth * 0.82,
+                        window.innerHeight * 0.25,
+                        120,
+                        300
+                    );
 
-            }, 2100);
+                }, 280);
 
-        });
+
+                /* SREDINA LEVO */
+
+                setTimeout(() => {
+
+                    createFirework(
+                        window.innerWidth * 0.08,
+                        window.innerHeight * 0.55,
+                        100,
+                        260
+                    );
+
+                }, 400);
+
+
+                /* SREDINA DESNO */
+
+                setTimeout(() => {
+
+                    createFirework(
+                        window.innerWidth * 0.92,
+                        window.innerHeight * 0.55,
+                        100,
+                        260
+                    );
+
+                }, 500);
+
+
+                /* DONJI LEVO */
+
+                setTimeout(() => {
+
+                    createFirework(
+                        window.innerWidth * 0.28,
+                        window.innerHeight * 0.75,
+                        110,
+                        280
+                    );
+
+                }, 620);
+
+
+                /* DONJI DESNO */
+
+                setTimeout(() => {
+
+                    createFirework(
+                        window.innerWidth * 0.72,
+                        window.innerHeight * 0.75,
+                        110,
+                        280
+                    );
+
+                }, 720);
+
+
+                /* VELIKA CENTRALNA EKSPLOZIJA */
+
+                setTimeout(() => {
+
+                    createFirework(
+                        window.innerWidth * 0.50,
+                        window.innerHeight * 0.38,
+                        150,
+                        380
+                    );
+
+                }, 850);
+
+
+                /* =========================
+                   PRELAZ NA MAIN.HTML
+                ========================= */
+
+                setTimeout(() => {
+
+                    /*
+                     * Sačuvaj trenutnu poziciju
+                     * pesme neposredno pre prelaza.
+                     */
+
+                    if (weddingMusic) {
+
+                        sessionStorage.setItem(
+                            "weddingMusicTime",
+                            weddingMusic.currentTime
+                        );
+
+                    }
+
+                    window.location.href =
+                        "main.html";
+
+                }, 2100);
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       NASTAVAK MUZIKE NA MAIN.HTML
+    ========================= */
+
+    if (
+        weddingMusic &&
+        window.location.pathname.includes("main.html")
+    ) {
+
+        const savedMusicTime =
+            sessionStorage.getItem(
+                "weddingMusicTime"
+            );
+
+
+        if (savedMusicTime !== null) {
+
+            weddingMusic.currentTime =
+                parseFloat(savedMusicTime);
+
+        }
+
+        weddingMusic.volume = 0.7;
+
+        weddingMusic.play()
+            .catch(error => {
+
+                console.log(
+                    "Muzika nije mogla da se nastavi:",
+                    error
+                );
+
+            });
+
+
+        /*
+         * Nastavljamo da pamtimo poziciju
+         * dok korisnik čita pozivnicu.
+         */
+
+        weddingMusic.addEventListener(
+            "timeupdate",
+            () => {
+
+                sessionStorage.setItem(
+                    "weddingMusicTime",
+                    weddingMusic.currentTime
+                );
+
+            }
+        );
 
     }
 
@@ -157,8 +389,6 @@ document.addEventListener("DOMContentLoaded", () => {
         maxDistance
     ) {
 
-        /* ČESTICE */
-
         for (
             let i = 0;
             i < numberOfParticles;
@@ -168,10 +398,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const particle =
                 document.createElement("span");
 
-            particle.classList.add("firework");
+            particle.classList.add(
+                "firework"
+            );
 
 
-            /* POČETNA POZICIJA */
+            /* POZICIJA */
 
             particle.style.left =
                 `${x}px`;
@@ -191,7 +423,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const distance =
                 80 +
-                Math.random() * maxDistance;
+                Math.random() *
+                maxDistance;
 
 
             const moveX =
@@ -202,8 +435,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 Math.sin(angle) *
                 distance;
 
-
-            /* CSS VARIJABLE */
 
             particle.style.setProperty(
                 "--x",
@@ -216,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-            /* NASUMIČNA VELIČINA */
+            /* VELIČINA */
 
             const size =
                 2 +
@@ -230,20 +461,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${size}px`;
 
 
-            /* NASUMIČNO TRAJANJE */
+            /* TRAJANJE */
 
             particle.style.animationDuration =
                 `${1.5 + Math.random() * 0.8}s`;
 
-
-            /* DODAJ NA EKRAN */
 
             fireworks.appendChild(
                 particle
             );
 
 
-            /* UKLONI */
+            /* UKLANJANJE */
 
             setTimeout(() => {
 
@@ -255,7 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* =========================
-           KRUŽNI TALAS EKSPLOZIJE
+           KRUŽNI TALAS
         ========================= */
 
         const ring =
@@ -314,14 +543,14 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-            /* NASUMIČNA HORIZONTALNA POZICIJA */
+            /* POZICIJA */
 
             petal.style.left =
                 Math.random() * 100 +
                 "%";
 
 
-            /* NASUMIČNA VELIČINA */
+            /* VELIČINA */
 
             const size =
                 Math.random() * 0.7 +
@@ -331,7 +560,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `scale(${size})`;
 
 
-            /* NASUMIČNA BRZINA */
+            /* BRZINA */
 
             const duration =
                 Math.random() * 7 +
@@ -341,7 +570,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 duration + "s";
 
 
-            /* LATICE SU ODMAH RASPOREĐENE */
+            /* KAŠNJENJE */
 
             const delay =
                 Math.random() * 10;
@@ -350,7 +579,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "-" + delay + "s";
 
 
-            /* NJIHANJE LEVO-DESNO */
+            /* NJIHANJE */
 
             const sway =
                 Math.random() * 250 -
@@ -361,8 +590,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 sway + "px"
             );
 
-
-            /* DODAJ LATICE */
 
             petalsContainer.appendChild(
                 petal

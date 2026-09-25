@@ -1,32 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style.css">
+
     <title>Aleksandra i Marko</title>
 </head>
+
 <body>
 
-  
-</div>
+    <!-- ZLATNI GLITTER -->
+    <div id="goldGlitter"></div>
 
+    <!-- DEKORATIVNI ZLATNI OKVIR -->
+    <div class="gold-frame"></div>
+
+    <!-- ORNAMENTI U ĆOŠKOVIMA -->
+    <div class="corner-ornament top-left">❦</div>
+    <div class="corner-ornament top-right">❦</div>
+    <div class="corner-ornament bottom-left">❦</div>
+    <div class="corner-ornament bottom-right">❦</div>
+
+
+    <!-- PADAJUĆE BELE LATICE -->
     <div class="petals" id="petals"></div>
 
+
+    <!-- GLAVNA STRANA -->
     <main class="cover">
 
         <div class="invitation-image">
 
-            <img src="img/dove.png" alt="Pozivnica za venčanje">
+            <!-- ZLATNI GLOW -->
+            <div class="invitation-glow"></div>
 
+            <img
+                src="img/dove.png"
+                alt="Pozivnica za venčanje"
+            >
+
+            <!-- DUGME -->
             <button id="openInvitation">
+                <span class="button-sparkle">✦</span>
                 OTVORITE
+                <span class="button-sparkle">✦</span>
             </button>
-            <div id="fireworks"></div>
 
         </div>
 
     </main>
+
+
+    <!-- VATROMET -->
+    <div id="fireworks"></div>
+    
+      <audio id="weddingMusic" preload="auto">
+        <source src="audio/tarapana.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="script.js"></script>
 
