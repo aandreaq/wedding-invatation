@@ -112,12 +112,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 weddingMusic.volume = 0.7;
 
                 try {
+
                     await weddingMusic.play();
+
                 } catch (error) {
+
                     console.log(
                         "Muzika nije mogla automatski da se pokrene:",
                         error
                     );
+
                 }
             }
 
@@ -249,9 +253,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 await fetch("main.html");
 
             if (!response.ok) {
+
                 throw new Error(
                     "main.html nije pronađen."
                 );
+
             }
 
             const html =
@@ -325,7 +331,9 @@ document.addEventListener("DOMContentLoaded", () => {
              */
 
             if (music) {
+
                 document.body.appendChild(music);
+
             }
 
 
@@ -355,6 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 error
             );
 
+
             /*
              * Ako fetch ne uspe,
              * vraćamo klasičan prelaz.
@@ -362,6 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             window.location.href =
                 "main.html";
+
         }
 
     }
@@ -391,12 +401,15 @@ document.addEventListener("DOMContentLoaded", () => {
             if (music.paused) {
 
                 music.play().catch(() => {
+
                     console.log(
                         "Telefon je blokirao nastavak muzike."
                     );
+
                 });
 
             }
+
         }
 
 
@@ -456,7 +469,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 petals.appendChild(petal);
+
             }
+
+        }
+
+
+        /* =========================
+           CRKVA - PUTANJA
+        ========================= */
+
+        const churchRoute =
+            document.querySelector(
+                ".church-route"
+            );
+
+        if (churchRoute) {
+
+            churchRoute.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    const url =
+                        "https://www.google.com/maps/search/?api=1&query=Hram+Svetog+Cara+Konstantina+i+Carice+Jelene+Indjija";
+
+                    window.open(
+                        url,
+                        "_blank"
+                    );
+
+                }
+            );
+
         }
 
     }
@@ -492,22 +538,27 @@ document.addEventListener("DOMContentLoaded", () => {
             particle.style.top =
                 `${y}px`;
 
+
             const angle =
                 (Math.PI * 2 * i) /
                 numberOfParticles;
+
 
             const distance =
                 80 +
                 Math.random() *
                 maxDistance;
 
+
             const moveX =
                 Math.cos(angle) *
                 distance;
 
+
             const moveY =
                 Math.sin(angle) *
                 distance;
+
 
             particle.style.setProperty(
                 "--x",
@@ -519,9 +570,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${moveY}px`
             );
 
+
             const size =
                 2 +
                 Math.random() * 6;
+
 
             particle.style.width =
                 `${size}px`;
@@ -529,15 +582,20 @@ document.addEventListener("DOMContentLoaded", () => {
             particle.style.height =
                 `${size}px`;
 
+
             particle.style.animationDuration =
                 `${1.5 + Math.random() * 0.8}s`;
+
 
             fireworks.appendChild(
                 particle
             );
 
+
             setTimeout(() => {
+
                 particle.remove();
+
             }, 2300);
 
         }
@@ -550,6 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "firework-ring"
         );
 
+
         ring.style.setProperty(
             "--ring-x",
             `${x}px`
@@ -560,12 +619,16 @@ document.addEventListener("DOMContentLoaded", () => {
             `${y}px`
         );
 
+
         fireworks.appendChild(
             ring
         );
 
+
         setTimeout(() => {
+
             ring.remove();
+
         }, 1600);
 
     }

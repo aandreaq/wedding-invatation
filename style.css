@@ -2044,7 +2044,8 @@ body {
     }
 
     .couple-names {
-        top: 3%;
+        top: 7%;
+       
     }
 
     .couple-names .name {
@@ -2146,8 +2147,7 @@ body {
 @media (max-width: 700px) {
 
     .wedding-plan {
-        padding:
-            75px 20px 85px;
+        padding: 75px 20px 85px;
     }
 
     .wedding-plan h2 {
@@ -2170,40 +2170,61 @@ body {
         flex-direction: column;
         gap: 25px;
         direction: ltr;
+        position: relative;
     }
 
     .plan-item:nth-child(2) .plan-content {
         direction: ltr;
     }
 
+    /* =========================
+       SLIKA
+    ========================= */
+
     .location-image {
         width: 220px;
         height: 200px;
+        position: relative;
+        z-index: 1;
     }
 
     .location-image::before {
         width: 190px;
         height: 190px;
+        pointer-events: none;
     }
 
     .location-image::after {
         width: 250px;
         height: 250px;
+        pointer-events: none;
     }
 
     .location-image img {
         width: 700px;
         height: 450px;
+        position: relative;
+        z-index: 1;
+        pointer-events: none;
     }
+
+    /* =========================
+       SADRŽAJ + DUGME
+    ========================= */
 
     .plan-content {
         width: 100%;
         text-align: center;
+        position: relative;
+        z-index: 50;
+    }
+
+    .plan-content h3 {
+        font-size: 24px;
     }
 
     .gold-line {
-        margin:
-            13px auto 16px;
+        margin: 13px auto 16px;
     }
 
     .location-name {
@@ -2215,9 +2236,26 @@ body {
 
     .location-place {
         font-size: 16px;
+        margin-bottom: 22px;
+    }
+
+    /* =========================
+       PUTANJA
+    ========================= */
+
+    .route-button {
+        position: relative;
+        z-index: 100;
+        pointer-events: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .route-button .arrow {
+        pointer-events: none;
     }
 }
-
 /* =========================================================
    MOBILNI - SAVE THE DATE
 ========================================================= */
