@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (weddingMusic) {
 
-                weddingMusic.currentTime = 58;
+                weddingMusic.currentTime = 20;
                 weddingMusic.volume = 0.7;
 
                 try {
